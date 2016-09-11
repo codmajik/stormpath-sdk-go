@@ -55,11 +55,11 @@ type accountStoreResource struct {
 //GetAccounts returns all the accounts of the application
 //
 //See: http://docs.stormpath.com/rest/product-guide/#application-accounts
-func (r *accountStoreResource) GetAccounts(criteria Criteria) (*Accounts, error) {
+func (r *accountStoreResource) GetAccounts(criteria AccountCriteria) (*Accounts, error) {
 	accounts := &Accounts{}
 
 	err := client.get(
-		buildAbsoluteURL(r.Accounts.Href, criteria.ToQueryString()),
+		buildAbsoluteURL(r.Accounts.Href, criteria.toQueryString()),
 		accounts,
 	)
 
